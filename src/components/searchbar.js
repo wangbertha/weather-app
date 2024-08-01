@@ -5,7 +5,7 @@ let userLocation;
 
 function createSearchBar() {
     // Create searchbar elements and attributes
-    const body = document.querySelector('body');
+    const siteContainer = document.querySelector('.site-container');
     const searchContainer = document.createElement('div');
     searchContainer.classList.add('search-container');
     const searchBarLabel = document.createElement('label');
@@ -17,7 +17,7 @@ function createSearchBar() {
     searchBar.setAttribute('type', 'search');
     searchContainer.appendChild(searchBarLabel);
     searchContainer.appendChild(searchBar);
-    body.appendChild(searchContainer);
+    siteContainer.appendChild(searchContainer);
 
     // Add event listener to save user input
     searchBar.addEventListener("keyup", (e) => {
