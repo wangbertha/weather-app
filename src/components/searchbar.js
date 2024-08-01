@@ -1,5 +1,5 @@
-import './dashboard.css';
-import { renderWeatherData } from './../index.js';
+import './searchbar.css';
+import { renderWeatherData } from '../index.js';
 
 let userLocation;
 

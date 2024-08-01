@@ -1,4 +1,4 @@
-import { renderSearchBar } from './pages/dashboard.js';
+import { renderSearchBar } from './components/searchbar.js';
 
 const key = '3L63BZALNF6WDMKYETGMT6Q4U';
 
