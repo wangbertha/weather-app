@@ -8,6 +8,17 @@ const siteContainer = document.createElement('div');
 siteContainer.classList.add('site-container');
 body.appendChild(siteContainer);
 
+const heading = document.createElement('div');
+heading.classList.add('heading');
+const welcome = document.createElement('h1');
+welcome.classList.add('welcome');
+welcome.textContent = 'Welcome to the Weather App!';
+const instructions = document.createElement('p');
+instructions.textContent = ' Please enter your location of choice below, and we will share its forecast for the next 7 days. Feel free to generate as many forecasts as you would like!';
+heading.appendChild(welcome);
+heading.appendChild(instructions);
+siteContainer.appendChild(heading);
+
 async function getWeatherData(myLocation) {
     const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?locations=${myLocation}&aggregateHours=24&unitGroup=us&shortColumnNames=false&contentType=json&key=${key}`;
     try {
