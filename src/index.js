@@ -15,8 +15,8 @@ async function getWeatherData(myLocation) {
     }
 }
 
-function renderWeatherData(userLocation) {
-    getWeatherData(userLocation);
+async function renderWeatherData(userLocation) {
+    const weatherData = await getWeatherData(userLocation);
 }
 
 renderSearchBar();
