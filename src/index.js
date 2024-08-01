@@ -1,3 +1,5 @@
+import { renderSearchBar } from './pages/dashboard.js';
+
 const key = '3L63BZALNF6WDMKYETGMT6Q4U';
 
 async function getWeatherData(myLocation) {
@@ -13,5 +15,6 @@ async function getWeatherData(myLocation) {
     }
 }
 
-let testLocation = 'Chicago,IL';
-getWeatherData(testLocation);
+renderSearchBar();
+
+export { getWeatherData };
