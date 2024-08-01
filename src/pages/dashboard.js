@@ -23,8 +23,7 @@ function createSearchBar() {
     searchBar.addEventListener("keyup", (e) => {
         e.preventDefault();
         if (e.key === 'Enter') {
-            userInput = e.target.value;
-            console.log(userLocation);
+            userLocation = e.target.value;
             renderWeatherData(userLocation);
         }
     });
