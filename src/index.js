@@ -18,9 +18,6 @@ instructions.textContent = ' Please enter your location of choice below, and we 
 heading.appendChild(welcome);
 heading.appendChild(instructions);
 siteContainer.appendChild(heading);
-const errorPlaceholder = document.createElement('div');
-errorPlaceholder.classList.add('error');
-heading.appendChild(errorPlaceholder);
 
 async function getWeatherData(myLocation) {
     const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?locations=${myLocation}&aggregateHours=24&unitGroup=us&shortColumnNames=false&contentType=json&key=${key}`;
@@ -31,7 +28,10 @@ async function getWeatherData(myLocation) {
         return data;
     }
     catch (error) {
-        renderError();
+        const errorMessage = document.createElement('p');
+        errorMessage.classList.add('error');
+        errorMessage.textContent = 'We were unable to identify this location. Please try again.';
+        heading.appendChild(errorMessage);
     }
 }
 
@@ -50,7 +50,7 @@ async function renderWeatherData(userLocation) {
 }
 
 function renderError() {
-    errorPlaceholder.textContent = 'We were unable to identify this location. Please try again.'
+
 }
 
 renderSearchBar();
