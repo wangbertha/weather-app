@@ -18,6 +18,9 @@ instructions.textContent = ' Please enter your location of choice below, and we 
 heading.appendChild(welcome);
 heading.appendChild(instructions);
 siteContainer.appendChild(heading);
+const errorPlaceholder = document.createElement('div');
+errorPlaceholder.classList.add('error');
+heading.appendChild(errorPlaceholder);
 
 async function getWeatherData(myLocation) {
     const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/forecast?locations=${myLocation}&aggregateHours=24&unitGroup=us&shortColumnNames=false&contentType=json&key=${key}`;
@@ -27,20 +30,27 @@ async function getWeatherData(myLocation) {
         const data = respJson.locations[myLocation].values;
         return data;
     }
-    catch (err) {
-        console.log(err);
+    catch (error) {
+        renderError();
     }
 }
 
 async function renderWeatherData(userLocation) {
     const weatherData = await getWeatherData(userLocation);
-    const forecastContainer = document.createElement('div');
-    forecastContainer.classList.add('forecast-container');
-    siteContainer.appendChild(forecastContainer);
-    for (let i=0; i<7; i++) {
-        const dayCard = renderDayCard(weatherData[i]);
-        forecastContainer.appendChild(dayCard);
+        if (weatherData !== undefined) {
+            const forecastContainer = document.createElement('div');
+            forecastContainer.classList.add('forecast-container');
+            siteContainer.appendChild(forecastContainer);
+            for (let i=0; i<7; i++) {
+                const dayCard = renderDayCard(weatherData[i]);
+                forecastContainer.appendChild(dayCard);
+            }
     }
+
+}
+
+function renderError() {
+    errorPlaceholder.textContent = 'We were unable to identify this location. Please try again.'
 }
 
 renderSearchBar();
