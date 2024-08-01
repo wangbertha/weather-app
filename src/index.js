@@ -17,6 +17,14 @@ async function getWeatherData(myLocation) {
 
 async function renderWeatherData(userLocation) {
     const weatherData = await getWeatherData(userLocation);
+    const tempContainer = document.createElement('div');
+    for (const day of weatherData) {
+        const temp = document.createElement('p');
+        temp.textContent = day.temp;
+        tempContainer.appendChild(temp);
+    }
+    const body = document.querySelector('body');
+    body.appendChild(tempContainer);
 }
 
 renderSearchBar();
