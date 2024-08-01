@@ -15,6 +15,10 @@ async function getWeatherData(myLocation) {
     }
 }
 
+function renderWeatherData(userLocation) {
+    getWeatherData(userLocation);
+}
+
 renderSearchBar();
 
-export { getWeatherData };
+export { renderWeatherData };

@@ -1,6 +1,7 @@
 import './dashboard.css';
+import { renderWeatherData } from './../index.js';
 
-let userInput;
+let userLocation;
 
 function createSearchBar() {
     // Create searchbar elements and attributes
@@ -23,8 +24,8 @@ function createSearchBar() {
         e.preventDefault();
         if (e.key === 'Enter') {
             userInput = e.target.value;
-            console.log(userInput);
-            // getWeatherData(userInput);
+            console.log(userLocation);
+            renderWeatherData(userLocation);
         }
     });
 }
